@@ -10,8 +10,8 @@ interface QuestionScreenProps {
 // リッカート尺度（6段階）
 const scaleConfig = [
   { value: 6, size: 'w-16 h-16 md:w-20 md:h-20', color: 'bg-brand-500 hover:bg-brand-600', label: '強く同意', text: '😍' },
-  { value: 5, size: 'w-14 h-14 md:w-16 md:h-16', color: 'bg-brand-400 hover:bg-brand-500', label: '同意', text: '🙂' },
-  { value: 4, size: 'w-12 h-12 md:w-14 md:h-14', color: 'bg-brand-300 hover:bg-brand-400', label: 'やや同意', text: '😐' },
+  { value: 5, size: 'w-14 h-14 md:w-16 md:h-16', color: 'bg-brand-400 hover:bg-brand-500', label: '同意', text: '�' },
+  { value: 4, size: 'w-12 h-12 md:w-14 md:h-14', color: 'bg-brand-300 hover:bg-brand-400', label: 'やや同意', text: '�' },
   { value: 3, size: 'w-12 h-12 md:w-14 md:h-14', color: 'bg-slate-300 hover:bg-slate-400', label: 'やや反対', text: '🤔' },
   { value: 2, size: 'w-14 h-14 md:w-16 md:h-16', color: 'bg-slate-400 hover:bg-slate-500', label: '反対', text: '😓' },
   { value: 1, size: 'w-16 h-16 md:w-20 md:h-20', color: 'bg-slate-500 hover:bg-slate-600', label: '強く反対', text: '😱' },
