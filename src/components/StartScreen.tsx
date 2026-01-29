@@ -23,7 +23,7 @@ function StartScreen({ onStart }: StartScreenProps) {
             AI TRANSFORMATION HUB
           </span>
           <h1 className="text-3xl md:text-5xl font-black text-gray-800 mb-2 tracking-tight">
-            AI活用・業務リデザイン
+            AIで拓く、<span className="text-brand-600">新しい世界へ</span>
           </h1>
           <h2 className="text-xl md:text-3xl font-bold text-gradient">
             変革支援ツール

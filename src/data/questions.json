@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "description": "AI活用・業務リデザイン変革支援ツール 質問セット（KB統合版）",
+  "description": "AIで拓く、新しい世界へ 質問セット（KB統合版）",
   "scale": {
     "min": 1,
     "max": 6,
