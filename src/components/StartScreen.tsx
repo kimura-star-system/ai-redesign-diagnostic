@@ -11,7 +11,7 @@ function StartScreen({ onStart }: StartScreenProps) {
   const [showVideoModal, setShowVideoModal] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-50 via-white to-accent-50 flex flex-col items-center justify-center p-4 py-12">
+    <div className="flex flex-col items-center justify-center p-4 py-12">
       <div className="max-w-5xl w-full">
         {/* ヘッダーエリア */}
         <motion.div
@@ -23,7 +23,7 @@ function StartScreen({ onStart }: StartScreenProps) {
             AI TRANSFORMATION HUB
           </span>
           <h1 className="text-3xl md:text-5xl font-black text-gray-800 mb-2 tracking-tight">
-            AIで拓く、<span className="text-brand-600">新しい世界へ</span>
+            AIで拓く、新しい世界へ
           </h1>
           <h2 className="text-xl md:text-3xl font-bold text-gradient">
             変革支援ツール

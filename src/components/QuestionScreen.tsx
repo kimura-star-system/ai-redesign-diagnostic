@@ -58,7 +58,7 @@ function QuestionScreen({ onComplete }: QuestionScreenProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-50 via-white to-accent-50 flex flex-col">
+    <div className="flex flex-col">
       {/* 進捗バー */}
       <div className="w-full bg-white/50 backdrop-blur-sm fixed top-0 left-0 z-50 border-b border-white/20">
         <div className="max-w-4xl mx-auto px-4 py-4">

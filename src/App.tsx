@@ -5,6 +5,8 @@ import FreeInputScreen from './components/FreeInputScreen'
 import ResultScreen from './components/ResultScreen'
 import type { Screen } from './types'
 
+import Background from './components/Background'
+
 function App() {
   const [screen, setScreen] = useState<Screen>('start')
   const [answers, setAnswers] = useState<Record<string, number>>({})
@@ -35,23 +37,26 @@ function App() {
   }
 
   return (
-    <>
-      {screen === 'start' && <StartScreen onStart={handleStart} />}
-      {screen === 'questions' && <QuestionScreen onComplete={handleQuestionsComplete} />}
-      {screen === 'free-input' && (
-        <FreeInputScreen
-          onComplete={handleFreeInputComplete}
-          onBack={handleBackToQuestions}
-        />
-      )}
-      {screen === 'result' && (
-        <ResultScreen
-          answers={answers}
-          freeText={freeText}
-          onRestart={handleRestart}
-        />
-      )}
-    </>
+    <div className="relative min-h-screen font-sans selection:bg-brand-100 selection:text-brand-900">
+      <Background />
+      <div className="relative z-10 min-h-screen">
+        {screen === 'start' && <StartScreen onStart={handleStart} />}
+        {screen === 'questions' && <QuestionScreen onComplete={handleQuestionsComplete} />}
+        {screen === 'free-input' && (
+          <FreeInputScreen
+            onComplete={handleFreeInputComplete}
+            onBack={handleBackToQuestions}
+          />
+        )}
+        {screen === 'result' && (
+          <ResultScreen
+            answers={answers}
+            freeText={freeText}
+            onRestart={handleRestart}
+          />
+        )}
+      </div>
+    </div>
   )
 }
 
