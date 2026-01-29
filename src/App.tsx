@@ -3,8 +3,7 @@ import StartScreen from './components/StartScreen'
 import QuestionScreen from './components/QuestionScreen'
 import FreeInputScreen from './components/FreeInputScreen'
 import ResultScreen from './components/ResultScreen'
-
-type Screen = 'start' | 'questions' | 'free-input' | 'result'
+import type { Screen } from './types'
 
 function App() {
   const [screen, setScreen] = useState<Screen>('start')

@@ -1,18 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import questionsData from '../data/questions.json';
+import type { Question } from '../types';
 
 interface QuestionScreenProps {
   onComplete: (answers: Record<string, number>) => void;
-}
-
-interface Question {
-  id: string;
-  axis: string;
-  wall: string;
-  category: string;
-  category_name: string;
-  text: string;
 }
 
 // リッカート尺度（6段階）

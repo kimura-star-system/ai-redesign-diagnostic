@@ -4,8 +4,9 @@ import remarkGfm from 'remark-gfm';
 import { motion } from 'framer-motion';
 import RadarChart from './RadarChart';
 import VideoModal from './VideoModal';
-import { calculateScores, convertToChartData, getBottleneckAxis, getAxisLabels } from '../utils/scoreCalculator';
+import { calculateScores, convertToChartData, getBottleneckAxis } from '../utils/scoreCalculator';
 import { analyzeDiagnostic } from '../services/difyApi';
+import { AXIS_LABELS } from '../constants';
 
 interface ResultScreenProps {
   answers: Record<string, number>;
@@ -22,7 +23,6 @@ function ResultScreen({ answers, freeText = '', onRestart }: ResultScreenProps) 
   const scores = calculateScores(answers);
   const chartData = convertToChartData(scores);
   const bottleneckAxis = getBottleneckAxis(scores);
-  const axisLabels = getAxisLabels();
 
   useEffect(() => {
     if (hasFetched.current) return;
@@ -66,7 +66,7 @@ function ResultScreen({ answers, freeText = '', onRestart }: ResultScreenProps) 
             </h1>
             <div className="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl py-8 px-10 inline-block shadow-lg">
               <p className="text-4xl md:text-6xl font-black tracking-tight">
-                {axisLabels[bottleneckAxis]}
+                {AXIS_LABELS[bottleneckAxis]}
               </p>
             </div>
           </div>

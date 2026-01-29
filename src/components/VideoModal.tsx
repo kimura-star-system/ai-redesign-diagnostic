@@ -1,24 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import { VIDEOS } from '../constants';
 
 interface VideoModalProps {
     isOpen: boolean;
     onClose: () => void;
 }
-
-const videos = [
-    {
-        title: '動画①：基礎編',
-        subtitle: '4つの壁の全体像と乗り越え方',
-        label: 'Coming Soon',
-        color: 'from-pink-500 to-rose-500'
-    },
-    {
-        title: '動画②：実践編',
-        subtitle: '業務リデザインを始める5ステップ',
-        label: 'Coming Soon',
-        color: 'from-blue-500 to-indigo-500'
-    },
-];
 
 export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
     return (
@@ -51,7 +37,7 @@ export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
                             </button>
                         </div>
                         <div className="p-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            {videos.map((video, idx) => (
+                            {VIDEOS.map((video, idx) => (
                                 <div key={idx} className="group cursor-default">
                                     <div className="aspect-video rounded-xl bg-gray-100 mb-4 overflow-hidden relative border border-gray-200">
                                         <div className={`absolute inset-0 bg-gradient-to-br ${video.color} opacity-5`} />

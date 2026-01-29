@@ -1,0 +1,535 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 診断ツール_dev_v2
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.2.8@aae2be0913b8c6f0b80cff58e08d7a8b4c214569b41778413fcaea204561ff16
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1767602131088-source-1767602221905-target
+      source: '1767602131088'
+      sourceHandle: source
+      target: '1767602221905'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1768551306882-source-1767602131088-target
+      source: '1768551306882'
+      sourceHandle: source
+      target: '1767602131088'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: template-transform
+      id: 1767601029989-source-1768551533507-target
+      source: '1767601029989'
+      sourceHandle: source
+      target: '1768551533507'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: knowledge-retrieval
+      id: 1768551533507-source-1768551306882-target
+      source: '1768551533507'
+      sourceHandle: source
+      target: '1768551306882'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: ユーザー入力
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: bottleneck_axis
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: bottleneck_axis
+        - default: ''
+          hint: ''
+          label: human_internal
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: human_internal
+        - default: ''
+          hint: ''
+          label: resource_internal
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: resource_internal
+        - default: ''
+          hint: ''
+          label: human_external
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: human_external
+        - default: ''
+          hint: ''
+          label: environment_external
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: environment_external
+        - default: ''
+          hint: ''
+          label: lowest_questions
+          max_length: 256
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: lowest_questions
+        - default: ''
+          hint: ''
+          label: free_text
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: false
+          type: text-input
+          variable: free_text
+      height: 265
+      id: '1767601029989'
+      position:
+        x: 650.9030824335263
+        y: 288
+      positionAbsolute:
+        x: 650.9030824335263
+        y: 288
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1768551306882'
+          - result
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-5-chat-latest
+          provider: langgenius/openai/openai
+        prompt_config:
+          jinja2_variables: []
+        prompt_template:
+        - edition_type: basic
+          id: e060617a-e65d-4c3e-9d77-0d47a4512699
+          role: system
+          text: '
+
+            # 役割
+
+            あなたは、組織の「AI活用・業務リデザイン」を支援する専門家コンサルタントです。
+
+            あなたの使命は、**単なる「効率化（Lv.2）」に留まらず、人とAIが協働する「業務・組織への転換（Lv.3/Lv.4）」**を実現するためのロードマップを示すことです。
+
+            Lv.3以上では、業務を作り直すのではなく、前提そのものを切り替える「転換（変革）」という言葉を重視してください。
+
+
+
+            提供された診断スコアと**ナレッジベースから検索されたフレームワーク（4つの壁、リデザインレベル定義）**に基づき、ユーザーに寄り添った改善レポートを作成してください。
+
+
+
+            ---
+
+
+
+            ## 📥 入力情報
+
+
+
+            - ボトルネック軸: {{#1767601029989.bottleneck_axis#}}
+
+              - **重要**: 出力時は以下の通り日本語名称に変換すること
+
+                - `human_internal` -> **自分の壁**
+
+                - `resource_internal` -> **資源の壁**
+
+                - `human_external` -> **他者の壁**
+
+                - `environment_external` -> **環境の壁**
+
+                - `none` -> **ボトルネックなし（全ての壁を突破）**
+
+            - 低スコア質問: {{#1767601029989.lowest_questions#}}
+
+              - Q1-Q5 → 自分の壁（H1-H5）
+
+              - Q6-Q10 → 資源の壁（R1-R5）
+
+              - Q11-Q15 → 他者の壁（E1-E5）
+
+              - Q16-Q20 → 環境の壁（V1-V5）
+
+
+
+            ### ユーザーの声（任意入力）
+
+            {{#1767601029989.free_text#}}
+
+
+
+            ### ナレッジベースからの参照情報
+
+            {{#context#}}
+
+            '
+        - id: 8810b4bb-632c-4519-a8b8-ae963afbee76
+          role: user
+          text: '---
+
+
+
+            ## 📝 出力フォーマット
+
+
+
+            ```markdown
+
+            # 🎯 診断結果レポート
+
+
+
+            ---
+
+
+
+            ## 🚩 最大のボトルネック
+
+            [※{{#1767601029989.bottleneck_axis#}} が `none` 以外の場合]
+
+            ### **【{{#1767601029989.bottleneck_axis#}}】**
+
+            > ここが、あなたの組織が「AI協働型」へ進化するのを妨げている最大の壁です。
+
+
+
+            [※{{#1767601029989.bottleneck_axis#}} が `none` の場合]
+
+            ### **【全ての壁を突破！】**
+
+            > おめでとうございます！あなたは全ての「壁」を乗り越え、AIと高度に協働できる理想的な土台を築けています。
+
+
+
+            ---
+
+
+
+            ## 🔎 現状の分析：リデザインレベル
+
+            [※{{#1767601029989.bottleneck_axis#}} が `none` 以外の場合]
+
+            | 現在の推定レベル | 目指すべき姿 |
+
+            | :--- | :--- |
+
+            | **Lv.2 業務単位の効率化（部分的リデザイン）** | **Lv.3 業務プロセスへの転換（業務構造リデザイン）** |
+
+
+
+            [※{{#1767601029989.bottleneck_axis#}} が `none` の場合]
+
+            | 現在の推定レベル | 目指すべき姿 |
+
+            | :--- | :--- |
+
+            | **Lv.3 業務プロセスへの転換（業務構造リデザイン）** | **Lv.4 組織への転換（組織運営リデザイン）** |
+
+
+
+            ---
+
+
+            ### ⚡ 解決すべき課題 / さらなる挑戦
+
+            [※{{#1767601029989.bottleneck_axis#}} が `none` 以外の場合]
+
+            - 低スコア質問から、現場で起きている「不都合な真実」をストーリー仕立てで解説。
+
+            - **課題1：** [具体的な課題]
+
+            - **課題2：** [具体的な課題]
+
+
+
+            [※{{#1767601029989.bottleneck_axis#}} が `none` の場合]
+
+            - 全項目満点という結果が、組織においてどのような「変革の芽」となっているかを解説。
+
+            - **挑戦1：組織への転換（Lv.4）に向けたナレッジ共有** 自部署で成功した「業務プロセスへの転換」を、全社的な仕組みへと昇華させる挑戦。
+
+            - **挑戦2：AI前提の価値創出** 業務の一部ではなく、組織運営そのものをAI前提で再定義する「組織への転換」への挑戦。
+
+
+
+            ---
+
+
+
+            ## 🛠️ 改善ロードマップ
+
+
+
+            ### 🐾 Step 1：最初のアプローチ（導入・突破）
+
+            * **アプローチ：** [{{#1767601029989.bottleneck_axis#}}の「最初のアプローチ」の内容を要約して記載]
+
+            * **具体的なアクション：** [上記を踏まえ、この組織が来週から始められる具体的な行動を提案]
+
+            * **期待効果：** [3ヶ月後の変化]
+
+
+
+            ### 🚀 Step 2：展開のためのアプローチ（定着・仕組み化）
+
+            * **アプローチ：** [{{#1767601029989.bottleneck_axis#}}の「展開のためのアプローチ」の内容を要約して記載]
+
+            * **具体的なアクション：** [上記を踏まえ、組織全体に広げるための具体的な施策を提案]
+
+            * **期待効果：** [1年後の組織像]
+
+
+
+            ---
+
+
+
+            ## 💡 専門家からのアドバイス
+
+            [※{{#1767601029989.bottleneck_axis#}} が `none` 以外の場合]
+
+            [人とAIの協働による新しい価値創出（Lv.3/4）への希望を示すメッセージ]
+
+
+
+            [※{{#1767601029989.bottleneck_axis#}}が `none` の場合]
+
+            [全ての壁を突破した努力を賞賛し、現状を維持しつつ周囲をどのようにリードしていくべきか、さらなる高み（Lv.4）に向けた応援メッセージ]
+
+            ```
+
+
+
+            ---
+
+
+
+            ## 🎨 出力の指針
+
+
+
+            - **視座**: 常に「業務効率化」の先にある「リデザイン（転換）」を見据えてアドバイスする
+
+            - **用語**: レベル名称は **「Lv.2 業務単位の効率化（部分的リデザイン）」** のように、定義済みの正式名称を省略せずに使用すること
+
+            - **言葉**: 専門コード（E2, H4など）は表示せず、日常的な言葉で説明する
+
+            - **呼称**: 氏名入力はないため、「〇〇様」や特定の個人名は絶対に出さない。中立的な「あなた」「皆様」などの表現を用いる。
+
+            - **共感**: ユーザーの入力テキストの内容を汲み取り、対話的なトーンを心がける
+
+            - **構造**: 表や引用ブロックを活用し、一目で要点が伝わるようにする'
+        selected: true
+        structured_output_enabled: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1767602131088'
+      position:
+        x: 1608.8929256651106
+        y: 158.1862016322155
+      positionAbsolute:
+        x: 1608.8929256651106
+        y: 158.1862016322155
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1767602131088'
+          - text
+          value_type: string
+          variable: result
+        selected: false
+        title: 出力
+        type: end
+      height: 88
+      id: '1767602221905'
+      position:
+        x: 1945.1259978482988
+        y: 198.35269064474107
+      positionAbsolute:
+        x: 1945.1259978482988
+        y: 198.35269064474107
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - oq7rjGG0t7Z0eSI2H022bajpIJ5t20vOqAoJdyb49MHwkwonhOmCEGVMYKvvsOY1
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          top_k: 4
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1768551533507'
+        - output
+        retrieval_mode: multiple
+        selected: false
+        title: 知識検索
+        type: knowledge-retrieval
+      height: 90
+      id: '1768551306882'
+      position:
+        x: 1265.5831233505057
+        y: 150.8031437793006
+      positionAbsolute:
+        x: 1265.5831233505057
+        y: 150.8031437793006
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        selected: false
+        template: "{{ bottleneck_axis }} における改善アプローチ\r\n{% if free_text %}\r\nユーザーの課題:\
+          \ {{ free_text }}\r\n{% endif %}"
+        title: テンプレート
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1767601029989'
+          - bottleneck_axis
+          value_type: string
+          variable: bottleneck_axis
+        - value_selector:
+          - '1767601029989'
+          - free_text
+          value_type: string
+          variable: free_text
+      height: 52
+      id: '1768551533507'
+      position:
+        x: 988.9648499623584
+        y: 291.686734594639
+      positionAbsolute:
+        x: 988.9648499623584
+        y: 291.686734594639
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -458.92711456129416
+      y: 248.5872128890697
+      zoom: 0.574349177498518
+  rag_pipeline_variables: []

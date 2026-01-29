@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import VideoModal from './VideoModal';
+import { AXIS_DESCRIPTIONS } from '../constants';
 
 interface StartScreenProps {
   onStart: () => void;
@@ -134,12 +135,7 @@ function StartScreen({ onStart }: StartScreenProps) {
         >
           <h4 className="text-center font-bold text-gray-600 mb-8 tracking-widest text-sm uppercase">MEASUREMENT AXES : 4つの壁</h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { title: '自分 (Internal)', desc: '心理的抵抗・当事者意識', color: 'bg-green-50 text-green-700 border-green-200' },
-              { title: '資源 (Resource)', desc: '時間・予算・スキル', color: 'bg-yellow-50 text-yellow-700 border-yellow-200' },
-              { title: '他者 (Social)', desc: '関係者・顧客の理解', color: 'bg-purple-50 text-purple-700 border-purple-200' },
-              { title: '環境 (External)', desc: '制度・文化・市場変化', color: 'bg-red-50 text-red-700 border-red-200' },
-            ].map((item, i) => (
+            {AXIS_DESCRIPTIONS.map((item, i) => (
               <div key={i} className={`p-4 rounded-2xl border ${item.color} backdrop-blur-sm bg-opacity-60 text-center`}>
                 <h5 className="font-bold text-sm mb-1">{item.title}</h5>
                 <p className="text-[10px] opacity-80">{item.desc}</p>
