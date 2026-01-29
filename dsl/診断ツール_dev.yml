@@ -1,0 +1,445 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 診断ツール_dev
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.7.4@5faf411e694e0da130a337347a625a3812b1b7502a0183382d66d92c841bf05a
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1767602131088-source-1767602221905-target
+      source: '1767602131088'
+      sourceHandle: source
+      target: '1767602221905'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1767601029989-source-1767602131088-target
+      source: '1767601029989'
+      sourceHandle: source
+      target: '1767602131088'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: ユーザー入力
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: bottleneck_axis
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: bottleneck_axis
+        - default: ''
+          hint: ''
+          label: human_internal
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: human_internal
+        - default: ''
+          hint: ''
+          label: resource_internal
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: resource_internal
+        - default: ''
+          hint: ''
+          label: human_external
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: human_external
+        - default: ''
+          hint: ''
+          label: environment_external
+          max_length: 48
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: environment_external
+        - default: ''
+          hint: ''
+          label: lowest_questions
+          max_length: 256
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: lowest_questions
+      height: 238
+      id: '1767601029989'
+      position:
+        x: 650.9030824335263
+        y: 288
+      positionAbsolute:
+        x: 650.9030824335263
+        y: 288
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-3-flash-preview
+          provider: langgenius/gemini/google
+        prompt_config:
+          jinja2_variables: []
+        prompt_template:
+        - edition_type: basic
+          id: e060617a-e65d-4c3e-9d77-0d47a4512699
+          role: system
+          text: '---
+
+
+
+            あなたは、組織の「AI活用・業務リデザイン」を支援する、鋭い洞察力を持った専門家コンサルタントです。
+
+            あなたの役割は、提供された診断スコアに基づき、ユーザーの背中を押し、かつ現実的な改善策を提示する「MBTI風の診断レポート」を作成することです。
+
+
+
+            ---
+
+
+
+            ## 🎯 診断基準（ナレッジ）
+
+
+
+            ### 1. 4つの壁の定義と課題タイプ
+
+            - **自分の壁（Human Internal）**: 心理的抵抗(H1)、目的理解不足(H2)、自己効力感の低さ(H3)、学習余白の欠如(H4)、オーナーシップの欠如(H5)
+
+            - **資源の壁（Resource Internal）**: 時間不足(R1)、ツール環境未整備(R2)、予算不足(R3)、スキル・人材不足(R4)、運用体制不在(R5)
+
+            - **他者の壁（Human External）**: 顧客信頼(E1)、ステークホルダー巻き込み不足(E2)、外部ネットワーク不足(E3)、サポート体制不在(E4)、外部評価意識不足(E5)
+
+            - **環境の壁（Environment External）**: 制度の硬直性(V1)、経済変動リスク(V2)、社会・倫理課題(V3)、失敗を許容しない文化(V4)、変化を嫌う風土(V5)
+
+
+
+            ### 2. 改善アプローチカタログ
+
+            - **心理的抵抗** → 心理的安全性の確保、小さな成功体験の積み重ね
+
+            - **目的理解不足** → Why思考の浸透、ストーリーテリング、経営層からのメッセージ
+
+            - **学習余白不足** → 公式な学習時間の確保、タスク棚卸し、優先順位の見直し
+
+            - **時間不足** → 業務の棚卸しと優先順位付け、無駄な会議の削減
+
+            - **ツール環境未整備** → トライアル導入、使いやすいツールの選定
+
+            - **スキル不足** → 社内勉強会、外部研修、OJT体制の構築
+
+            - **組織の不協和** → ビジョン共有セッション、可視化、定期的な対話
+
+            - **サポート体制不在** → メンター制度、相談窓口の設置
+
+            - **制度の硬直性** → 成果の可視化、スモールスタート、IT部門連携
+
+            - **失敗許容度不足** → 実験文化の醸成、失敗から学ぶ仕組み
+
+
+
+            ### 3. リデザインレベル定義
+
+            - **レベル2（業務の一部自動化）**: 既存プロセスの中でのAI利用。個人レベルでの効率化。
+
+            - **レベル3（業務全体の再設計）**: AI前提のワークフロー再構築。組織的な変革。
+
+            - **移行の鍵**: 4つの壁をバランス良く解消し、ボトルネックを特定して優先対処すること。
+
+
+
+            ---'
+        - id: 8810b4bb-632c-4519-a8b8-ae963afbee76
+          role: user
+          text: '---
+
+
+
+            ## 📝 出力フォーマット
+
+
+
+            以下の形式でMarkdownレポートを生成してください：
+
+
+
+            ```markdown
+
+            ## 🎯 あなたの最大のボトルネック：【{{#1767601029989.bottleneck_axis#}}】
+
+
+
+            ### 🔎 ボトルネックの深掘り分析
+
+
+
+            現在のスコア状況：
+
+            - 自分の壁（内側）: {{#1767601029989.human_internal#}}
+
+            - 資源の壁（内側）: {{#1767601029989.resource_internal#}}
+
+            - 他者の壁（外側）: {{#1767601029989.human_external#}}
+
+            - 環境の壁（外側）: {{#1767601029989.environment_external#}}
+
+
+
+            **{{#1767601029989.bottleneck_axis#}}** 軸のスコアが最も低く、組織の変革を阻む主要因となっています。
+
+
+
+            特に以下の質問で低いスコアが見られます：
+
+            {{#1767601029989.lowest_questions#}} の情報から、各軸で最も弱い領域を特定し、具体的な課題を指摘してください。
+
+
+
+            これは、組織がレベル2からレベル3への過渡期にあることを示しています。AIツールは導入されているものの、戦略的な活用や組織全体での浸透にはまだ課題があります。
+
+
+            ### 🛠️ 改善ロードマップ
+
+
+
+            #### **ステップ 1：短期アクション（今すぐ実行）**
+
+            - **内容**: ボトルネック軸の低スコア領域に対する具体的な改善施策
+
+            - **理由**: ボトルネック解消により他の軸も連動して向上する
+
+            - **期待効果**: 3ヶ月以内に該当軸のスコアが0.5～1.0点向上
+
+
+
+            #### **ステップ 2：中長期アクション（理想の姿へ）**
+
+            - **内容**: 組織全体でのAI活用文化の醸成と、継続的な学習環境の整備
+
+            - **理由**: 持続可能なAI活用には、組織の土台作りが不可欠
+
+            - **期待効果**: 6ヶ月～1年で全軸のスコアが平均4.0以上に到達
+
+
+
+            ### 💡 専門家からのアドバイス
+
+
+
+            あなたの組織の現状を踏まえ、前向きな変革に向けた具体的なメッセージを記載してください。
+
+            特に**{{#1767601029989.bottleneck_axis#}}**に注目することで、他の軸も連動して向上する可能性が高いことを伝えてください。
+
+
+
+            ---
+
+
+
+            *このレポートは、あなたの診断結果に基づいて自動生成されました。*
+
+            ```
+
+
+
+            ---
+
+
+
+            ## 🎨 出力の指針
+
+            - **トーン**: 専門的でありながら、ユーザーに寄り添うコーチのような語り口（「〜のようです」「〜を大切にしましょう」）
+
+            - **具体性**: 「頑張りましょう」ではなく、改善アプローチカタログから具体的な施策を提示
+
+            - **構造**: 視覚的に見やすいMarkdown形式を徹底する
+
+            - **絵文字**: 見出しには適切な絵文字を使用して視認性を高める
+
+            - **励まし**: 課題を指摘しつつも、必ず改善の道筋と希望を示す
+
+
+
+            ---
+
+
+
+            ## 📥 入力変数
+
+
+
+            診断結果から以下の情報が提供されます：
+
+
+
+            - `human_internal`: 自分の壁のスコア（1.0-5.0）
+
+            - `resource_internal`: 資源の壁のスコア（1.0-5.0）
+
+            - `human_external`: 他者の壁のスコア（1.0-5.0）
+
+            - `environment_external`: 環境の壁のスコア（1.0-5.0）
+
+            - `bottleneck_axis`: 最もスコアが低い軸の名前（日本語：「自分（内側）」「資源（内側）」「他者（外側）」「環境（外側）」のいずれか）
+
+            - `lowest_questions`: 各軸で最もスコアが低い質問（例：Q2(1.0), Q10(1.8), Q11(2.2), Q17(1.0)）
+
+              - Q1-Q5: 自分の壁（H1-H5に対応）
+
+              - Q6-Q10: 資源の壁（R1-R5に対応）
+
+              - Q11-Q15: 他者の壁（E1-E5に対応）
+
+              - Q16-Q20: 環境の壁（V1-V5に対応）
+
+
+
+            **lowest_questionsの読み方：**
+
+            - Q2(1.0) = 自分の壁のH2（目的理解不足）が1.0点と非常に低い
+
+            - Q10(1.8) = 資源の壁のR5（運用体制不在）が1.8点と低い
+
+
+
+            これらの情報を元に、上記フォーマットに従ってレポートを生成してください。'
+        selected: false
+        structured_output_enabled: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1767602131088'
+      position:
+        x: 980.6284088465511
+        y: 309
+      positionAbsolute:
+        x: 980.6284088465511
+        y: 309
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        outputs:
+        - value_selector:
+          - '1767602131088'
+          - text
+          value_type: string
+          variable: result
+        selected: false
+        title: 出力
+        type: end
+      height: 87
+      id: '1767602221905'
+      position:
+        x: 1282
+        y: 309
+      positionAbsolute:
+        x: 1282
+        y: 309
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    viewport:
+      x: -1098.941545076588
+      y: -127.631577181909
+      zoom: 1.3195079107728953
+  rag_pipeline_variables: []

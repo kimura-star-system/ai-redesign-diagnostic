@@ -1,0 +1,178 @@
+{
+  "version": "2.0",
+  "description": "AI活用・業務リデザイン変革支援ツール 質問セット（KB統合版）",
+  "scale": {
+    "min": 1,
+    "max": 6,
+    "labels": {
+      "1": "強く反対",
+      "2": "反対",
+      "3": "やや反対",
+      "4": "やや同意",
+      "5": "同意",
+      "6": "強く同意"
+    }
+  },
+  "questions": [
+    {
+      "id": "Q1",
+      "axis": "human_internal",
+      "wall": "自分の壁",
+      "category": "H1",
+      "category_name": "心理的抵抗",
+      "text": "AIを使うことに対して、不安や「自分の仕事を奪われる」といった抵抗感を持たずにいられますか？"
+    },
+    {
+      "id": "Q2",
+      "axis": "human_internal",
+      "wall": "自分の壁",
+      "category": "H2",
+      "category_name": "目的理解・腹落ち",
+      "text": "なぜ今の業務を変えてまでAIを活用する必要があるのか、その理由や価値を心から納得できていますか？"
+    },
+    {
+      "id": "Q3",
+      "axis": "human_internal",
+      "wall": "自分の壁",
+      "category": "H3",
+      "category_name": "自己効力感",
+      "text": "新しいAIツールや手法を、自分自身で試行錯誤しながら使いこなしていける自信はありますか？"
+    },
+    {
+      "id": "Q4",
+      "axis": "human_internal",
+      "wall": "自分の壁",
+      "category": "H4",
+      "category_name": "学習余白",
+      "text": "日々の業務に追われるだけでなく、新しい技術を学んだり試したりする「余白の時間」を持てていますか？"
+    },
+    {
+      "id": "Q5",
+      "axis": "human_internal",
+      "wall": "自分の壁",
+      "category": "H5",
+      "category_name": "オーナーシップ",
+      "text": "会社からの指示を待つだけでなく、「自分たちの業務はどうあるべきか」を主体的に考えられていますか？"
+    },
+    {
+      "id": "Q6",
+      "axis": "resource_internal",
+      "wall": "資源の壁",
+      "category": "R1",
+      "category_name": "時間・工数",
+      "text": "AI活用や業務変革の検討・検証を行うための、まとまった時間を業務時間内に確保できていますか？"
+    },
+    {
+      "id": "Q7",
+      "axis": "resource_internal",
+      "wall": "資源の壁",
+      "category": "R2",
+      "category_name": "ツール・環境",
+      "text": "業務で利用しているPCやシステムは、最新のAIツールをストレスなく動かせるスペックや環境ですか？"
+    },
+    {
+      "id": "Q8",
+      "axis": "resource_internal",
+      "wall": "資源の壁",
+      "category": "R3",
+      "category_name": "知識・スキル",
+      "text": "AIを活用するために必要な専門知識やスキルを持った人材が、チームや身近なサポート体制にいますか？"
+    },
+    {
+      "id": "Q9",
+      "axis": "resource_internal",
+      "wall": "資源の壁",
+      "category": "R4",
+      "category_name": "データ品質",
+      "text": "AIに入力・学習させるためのデータは、整理・統合され、すぐに使える状態で管理されていますか？"
+    },
+    {
+      "id": "Q10",
+      "axis": "resource_internal",
+      "wall": "資源の壁",
+      "category": "R5",
+      "category_name": "予算・投資",
+      "text": "AIツールの導入や検証にかかるコスト（有料プラン契約など）に対して、スムーズに予算がつきますか？"
+    },
+    {
+      "id": "Q11",
+      "axis": "human_external",
+      "wall": "他者の壁",
+      "category": "E1",
+      "category_name": "不協和・期待ズレ",
+      "text": "経営層、上司、現場メンバーの間で、AI活用に対する期待値や温度感は一致していますか？"
+    },
+    {
+      "id": "Q12",
+      "axis": "human_external",
+      "wall": "他者の壁",
+      "category": "E2",
+      "category_name": "他部署巻き込み",
+      "text": "自部署だけでなく、関連する他部署とも情報共有や連携がスムーズに行えていますか？（縦割りになっていませんか？）"
+    },
+    {
+      "id": "Q13",
+      "axis": "human_external",
+      "wall": "他者の壁",
+      "category": "E3",
+      "category_name": "上司理解・承認",
+      "text": "直属の上司は、AI活用による新しいチャレンジや失敗に対して理解があり、背中を押してくれますか？"
+    },
+    {
+      "id": "Q14",
+      "axis": "human_external",
+      "wall": "他者の壁",
+      "category": "E4",
+      "category_name": "顧客・外部の信頼",
+      "text": "顧客や取引先に対して、AIを活用したサービスや対応を行うことへの理解や信頼は得られそうですか？"
+    },
+    {
+      "id": "Q15",
+      "axis": "human_external",
+      "wall": "他者の壁",
+      "category": "E5",
+      "category_name": "パートナー連携",
+      "text": "外部ベンダーやパートナー企業は、AI活用を前提とした新しい連携の形に協力的ですか？"
+    },
+    {
+      "id": "Q16",
+      "axis": "environment_external",
+      "wall": "環境の壁",
+      "category": "V1",
+      "category_name": "制度・ルール",
+      "text": "社内のセキュリティ規定や業務ルールは、AI活用を阻害せず、実態に合わせて柔軟に見直されていますか？"
+    },
+    {
+      "id": "Q17",
+      "axis": "environment_external",
+      "wall": "環境の壁",
+      "category": "V2",
+      "category_name": "評価制度",
+      "text": "新しいツールを使って効率化したり挑戦したりすることが、人事評価や報酬として正当に評価されますか？"
+    },
+    {
+      "id": "Q18",
+      "axis": "environment_external",
+      "wall": "環境の壁",
+      "category": "V3",
+      "category_name": "リスク管理",
+      "text": "AIによるミス（ハルシネーション）やリスクに対して、過度に恐れるのではなく、適切に対処する準備はできていますか？"
+    },
+    {
+      "id": "Q19",
+      "axis": "environment_external",
+      "wall": "環境の壁",
+      "category": "V4",
+      "category_name": "経営コミットメント",
+      "text": "経営層は、「AI活用・業務リデザイン」を全社的な重要戦略として位置づけ、本気でコミットしていますか？"
+    },
+    {
+      "id": "Q20",
+      "axis": "environment_external",
+      "wall": "環境の壁",
+      "category": "V5",
+      "category_name": "マクロ環境変化",
+      "text": "法規制や技術の急激な変化（著作権法の変更など）に対応できるよう、情報のキャッチアップ体制はありますか？"
+    }
+  ]
+}
