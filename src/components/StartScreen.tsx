@@ -22,10 +22,10 @@ function StartScreen({ onStart }: StartScreenProps) {
           <span className="inline-block px-4 py-1.5 rounded-full bg-brand-50 text-brand-600 text-sm font-bold tracking-wide mb-4 border border-brand-100">
             AI TRANSFORMATION HUB
           </span>
-          <h1 className="text-4xl md:text-5xl font-black text-gray-800 mb-2 tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-black text-gray-800 mb-2 tracking-tight">
             AI活用・業務リデザイン
           </h1>
-          <h2 className="text-2xl md:text-3xl font-bold text-gradient">
+          <h2 className="text-xl md:text-3xl font-bold text-gradient">
             変革支援ツール
           </h2>
         </motion.div>
@@ -45,7 +45,7 @@ function StartScreen({ onStart }: StartScreenProps) {
 
               <div className="relative z-10">
                 <div className="text-4xl mb-6">📊</div>
-                <h3 className="text-2xl md:text-3xl font-black text-gray-800 mb-4">
+                <h3 className="text-xl md:text-3xl font-black text-gray-800 mb-4">
                   現状を可視化する
                 </h3>
                 <p className="text-gray-600 leading-relaxed mb-8 max-w-md">

@@ -22,7 +22,7 @@ function FreeInputScreen({ onComplete, onBack }: FreeInputScreenProps) {
             >
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand-400 to-accent-400" />
 
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
+                <h2 className="text-xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
                     最後に、一言だけ教えてください
                 </h2>
 

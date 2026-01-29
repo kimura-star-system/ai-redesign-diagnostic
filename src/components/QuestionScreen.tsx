@@ -102,7 +102,7 @@ function QuestionScreen({ onComplete }: QuestionScreenProps) {
               </div>
 
               {/* 質問文 */}
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-12 text-center leading-relaxed">
+              <h2 className="text-xl md:text-3xl font-bold text-gray-800 mb-12 text-center leading-relaxed">
                 {currentQuestion.text}
               </h2>
 

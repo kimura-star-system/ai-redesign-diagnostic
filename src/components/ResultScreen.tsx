@@ -61,11 +61,11 @@ function ResultScreen({ answers, freeText = '', onRestart }: ResultScreenProps) 
 
           <div className="relative z-10 text-center">
             <p className="text-lg font-medium mb-3 opacity-90 tracking-wider">DIAGNOSTIC RESULT</p>
-            <h1 className="text-3xl md:text-5xl font-bold mb-6 drop-shadow-sm">
+            <h1 className="text-2xl md:text-5xl font-bold mb-6 drop-shadow-sm">
               {bottleneckAxis === 'none' ? 'おめでとうございます！' : 'あなたの最大のボトルネックは'}
             </h1>
             <div className="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl py-8 px-10 inline-block shadow-lg">
-              <p className="text-4xl md:text-6xl font-black tracking-tight">
+              <p className="text-3xl md:text-6xl font-black tracking-tight">
                 {AXIS_LABELS[bottleneckAxis]}
               </p>
             </div>
