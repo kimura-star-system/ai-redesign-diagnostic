@@ -46,7 +46,7 @@ function ResultScreen({ answers, freeText = '', onRestart }: ResultScreenProps) 
   }, [scores, answers, freeText]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-50 via-white to-accent-50 p-4 py-12 text-gray-800">
+    <div className="p-4 py-12 text-gray-800">
       <div className="max-w-6xl mx-auto">
 
         {/* ヒーローセクション */}
