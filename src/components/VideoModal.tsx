@@ -57,7 +57,7 @@ export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
                         </div>
                         <div className="p-6 bg-gray-50 text-center">
                             <p className="text-sm text-gray-500">
-                                動画コンテンツは現在制作中です。近日中に公開予定です。
+                                動画コンテンツは2026年2月12日の報告会にて公開予定です。お楽しみに！
                             </p>
                         </div>
                     </motion.div>

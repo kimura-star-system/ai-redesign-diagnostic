@@ -18,8 +18,8 @@ export type { Scores, ScoreKey, BottleneckAxis };
 export function calculateScores(answers: Record<string, number>): Scores {
   const scores: Scores = {
     human_internal: '0',
-    resource_internal: '0',
     human_external: '0',
+    resource_internal: '0',
     environment_external: '0'
   };
 

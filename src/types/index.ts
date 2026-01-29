@@ -12,8 +12,8 @@ export type Screen = 'start' | 'questions' | 'free-input' | 'result';
  */
 export interface Scores {
     human_internal: string;
-    resource_internal: string;
     human_external: string;
+    resource_internal: string;
     environment_external: string;
 }
 

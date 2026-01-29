@@ -96,8 +96,8 @@ function ResultScreen({ answers, freeText = '', onRestart }: ResultScreenProps) 
             <div className="grid grid-cols-2 gap-4">
               {[
                 { key: 'human_internal', label: '自分', color: 'bg-green-50 text-green-700', border: 'border-green-200' },
-                { key: 'resource_internal', label: '資源', color: 'bg-yellow-50 text-yellow-700', border: 'border-yellow-200' },
                 { key: 'human_external', label: '他者', color: 'bg-purple-50 text-purple-700', border: 'border-purple-200' },
+                { key: 'resource_internal', label: '資源', color: 'bg-yellow-50 text-yellow-700', border: 'border-yellow-200' },
                 { key: 'environment_external', label: '環境', color: 'bg-red-50 text-red-700', border: 'border-red-200' },
               ].map((item) => (
                 <div

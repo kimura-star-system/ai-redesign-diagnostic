@@ -46,8 +46,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.log('Payload:', JSON.stringify({
       inputs: {
         human_internal: String(scores.human_internal),
-        resource_internal: String(scores.resource_internal),
         human_external: String(scores.human_external),
+        resource_internal: String(scores.resource_internal),
         environment_external: String(scores.environment_external),
         bottleneck_axis: bottleneckAxis,
         lowest_questions: lowestQuestions,
@@ -66,8 +66,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       body: JSON.stringify({
         inputs: {
           human_internal: String(scores.human_internal),
-          resource_internal: String(scores.resource_internal),
           human_external: String(scores.human_external),
+          resource_internal: String(scores.resource_internal),
           environment_external: String(scores.environment_external),
           bottleneck_axis: bottleneckAxis,
           lowest_questions: lowestQuestions,
