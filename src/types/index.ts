@@ -58,4 +58,5 @@ export interface VideoItem {
     subtitle: string;
     label: string;
     color: string;
+    url?: string;
 }

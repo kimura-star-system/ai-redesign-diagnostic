@@ -48,16 +48,18 @@ export const SCORE_SCALE = {
  */
 export const VIDEOS: readonly VideoItem[] = [
     {
-        title: '動画①',
-        subtitle: '???',
-        label: 'Coming Soon',
-        color: 'from-pink-500 to-rose-500'
+        title: '動画①：コンセプト編',
+        subtitle: 'なぜ今、変革が必要なのか？',
+        label: 'Video 1',
+        color: 'from-pink-500 to-rose-500',
+        url: '/videos/video1.mp4'
     },
     {
-        title: '動画②',
-        subtitle: '???',
-        label: 'Coming Soon',
-        color: 'from-blue-500 to-indigo-500'
+        title: '動画②：活用実践編',
+        subtitle: 'AI活用の具体的なイメージを掴む',
+        label: 'Video 2',
+        color: 'from-blue-500 to-indigo-500',
+        url: '/videos/video2.mp4'
     }
 ] as const;
 
