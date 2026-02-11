@@ -48,15 +48,15 @@ export const SCORE_SCALE = {
  */
 export const VIDEOS: readonly VideoItem[] = [
     {
-        title: '動画①：コンセプト編',
-        subtitle: 'なぜ今、変革が必要なのか？',
+        title: 'リデザイン劇場パート１：究極の謝罪プロンプト VS 業務リデザイン',
+        subtitle: 'リデザインレベル2とレベル3で何が違うの？',
         label: 'Video 1',
         color: 'from-pink-500 to-rose-500',
         url: '/videos/video1.mp4'
     },
     {
-        title: '動画②：活用実践編',
-        subtitle: 'AI活用の具体的なイメージを掴む',
+        title: 'リデザイン劇場パート２：ひろし覚醒！AIと共に歩む業務リデザインの記録',
+        subtitle: 'リデザインレベル3への壁を突破せよ！',
         label: 'Video 2',
         color: 'from-blue-500 to-indigo-500',
         url: '/videos/video2.mp4'
